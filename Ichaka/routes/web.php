@@ -1,7 +1,5 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CultureController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::post('/api/cultures', [CultureController::class, 'store']);

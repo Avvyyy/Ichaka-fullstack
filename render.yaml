@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: ichaka-frontend
+    repo: https://github.com/Avvyyy/Ichaka-fullstack
+    branch: main
+    buildCommand: cd Ichaka-Frontend && npm install && npm run build
+    startCommand: cd Ichaka-Frontend && npm run start
+    env:
+      - NODE_ENV=production
+
+  - type: web
+    name: ichaka-backend
+    repo: https://github.com/Avvyyy/Ichaka-fullstack
+    branch: main
+    buildCommand: docker build -t ichaka-backend .
+    startCommand: docker run -p 80:80 ichaka-backend
+    env:
+      - APP_ENV=production
+      - APP_KEY=base64:9A4s5hFW/RZITa+BVo6VipOSYAYvvnOGKmzu56AZ7Ds=
+      - DB_CONNECTION=mysql
+      - DB_HOST=127.0.0.1
+      - DB_PORT=3306
+      - DB_DATABASE=cultureDatabase
+      - DB_USERNAME=root
+      - DB_PASSWORD=favour
